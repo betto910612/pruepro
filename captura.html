@@ -132,7 +132,7 @@ function txtAge_onblur() {
 
 <!--_______________________________________________________________-->
 <!--_______________________________________________________________-->
-<script language="javascript">
+<script>
 function obtener_localizacion() {
   navigator.geolocation.getCurrentPosition(coordenadas);
 }
@@ -197,7 +197,7 @@ function capturePhoto() {
 <br>
 <a href="javascript:obtener_localizacion();" id="coordenadas" data-role="button">Obtener Coordenadas </a>
 <br>
-<input type="text" id="lat" placeholder="'Latitud'" readonly="readonly"/>
+<input type="text" id="lat" placeholder="'Latitud'" readonly/>
 <br>
 <input type="text" id="long" placeholder="'Longitud'"readonly="readonly"/>
 <br>
