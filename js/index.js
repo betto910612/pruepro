@@ -19,7 +19,11 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-        destinationType: Camera.DestinationType.DATA_URL, correctOrientation: true,
+        destinationType: Camera.DestinationType.DATA_URL, 
+		sourceType : Camera.PictureSourceType.CAMERA,
+		popoverOptions: CameraPopoverOptions,
+		saveToPhotoAlbum: true,
+		correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
@@ -42,5 +46,5 @@ function onPhotoURISuccess(imageURI) {
 }
 
 function onFail(message) {
-    alert('Error por: ' + message);
+    alert('Error debido a: ' + message);
 }
