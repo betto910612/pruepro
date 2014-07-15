@@ -6,6 +6,7 @@
 
 <link href="jquery.mobile-1.4.3.min.css" type="text/css" rel="stylesheet">
 <link href="jquery.mobile.structure-1.4.3.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/index.css" />
 <script src="jquery-2.1.1.js" type="text/javascript"></script>
 <script src="jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
@@ -139,7 +140,7 @@ function obtener_localizacion() {
 function coordenadas(position) {
   var latitud = position.coords.latitude;
   var longitud = position.coords.longitude;
- alert('Tus coordenadas son: ('+latitud+','+longitud+')');
+ <!--alert('Tus coordenadas son: ('+latitud+','+longitud+')');-->
   var la = $("#lat");
   la.val(latitud);
   var lo = $("#long");
@@ -149,29 +150,7 @@ function coordenadas(position) {
 
 
 <!--______________________________________________________________-->
-var app = {
-    initialize: function() {
-        this.bindEvents();
-    },
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-};
 
-
-
-function capturePhoto() {
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-        destinationType: Camera.DestinationType.DATA_URL,
-        correctOrientation: true,
-        targetWidth: 1000,
-        targetHeight: 1000
-    });
-}
 </script>
 
 
@@ -202,9 +181,9 @@ function capturePhoto() {
 <input type="text" id="long" placeholder="'Longitud'"readonly="readonly"/>
 <br>
 
-<!--<button id='btn' ontouchend="capturePhoto()">Tomar foto</button>-->
-<a href="javascript:capturePhoto()" id="foto" data-role="button">Tomar Foto</a>
-      
+<button id='btn' ontouchend="capturePhoto()">Tomar foto</button>
+<!--<a href="javascript:capturePhoto()" id="foto" data-role="button">Tomar Foto</a>-->
+      <div id="foto"></div>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 </form>
@@ -217,6 +196,7 @@ function capturePhoto() {
 </div>
 </div>
 <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
