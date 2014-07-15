@@ -1,5 +1,3 @@
-var pictureSource; // Origen de la imagen
-var destinationType; // Formato del valor retornado
 var app = {
 	 
         
