@@ -15,7 +15,7 @@ if($resultado){
  echo "El registro se almaceno de manera correcta";  
  
 }else{
- die("Error de conexión".mysql_error());   
+ die("Error de conexión ".mysql_error());   
 }
 
 
