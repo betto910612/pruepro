@@ -19,7 +19,7 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-        destinationType: Camera.DestinationType.DATA_URL, saveToPhotoAlbum: true,correctOrientation: true,
+        destinationType: Camera.DestinationType.DATA_URL, correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
