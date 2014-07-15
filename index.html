@@ -48,8 +48,8 @@ document.addEventListener("deviceready",function(){
 function enviar(nom,dir,tel,mail,lat,lon){
 	$.ajax({
 		type: "POST",
-		//url: "http://itslmoviles.260mb.net/procesar.php",
-		url:"procesar.php",
+		url:"http://parkingapp.260mb.net/procesar.php",
+		<!--url:"procesar.php",-->
 		data:({ nombre:nom,direccion:dir,telefono:tel,correo:mail,latitud:lat,longitud:lon}),
 		success: onSuccess
 	}).done(function(msg){
