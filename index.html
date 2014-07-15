@@ -89,17 +89,17 @@ function EnviarServidor(image){
 
     options.params = params;
     options.chunkedMode = false;
-    var url="subir.php";
-    var url2="subir.php";
+    var url="parkingapp.260mb.net/subir.php";
+    var url2="parkingapp.260mb.net/subir.php";
     var ft = new FileTransfer();
    ft.upload(image, url2, win, fail, options, true);
                             }
    function win(r) {
-   alert("Image uploaded successfully!!");
+   alert("Imagen cargada correctamente!!");
                           }
                           //Failure callback
    function fail(error) {
-   alert("There was an error uploading image");
+   alert("Hubo un error al subir la imagen");
                           } 
 	
 }
