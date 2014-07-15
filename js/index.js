@@ -24,7 +24,8 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-        destinationType: Camera.DestinationType.DATA_URL, 
+        <!--destinationType: Camera.DestinationType.DATA_URL,--> 
+		destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		popoverOptions: CameraPopoverOptions,
 		saveToPhotoAlbum: true,

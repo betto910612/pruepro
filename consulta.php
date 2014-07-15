@@ -1,20 +1,23 @@
 <?php
 require 'conexion.php';
 
-$sql="SELECT idauto, Marca, Modelo, Color, Precio FROM autos";
+$sql="SELECT * FROM servicios";
 $resultado=mysql_query($sql,$con);
-if($resultado){
-    $datos = array();
-    $i=0;
-    while($fila = mysql_fetch_assoc($resultado)) 
-    { 
-      $datos[$i] = $fila;
-    $i=$i+1;
-    }
-}else{
- die("Error de conexión".mysql_error());   
-}
+$row = mysql_fetch_assoc($resultado);
+header("Content-Type: text/xml;charset=iso-8859-1");
 
-mysql_close($con);
-echo json_encode($datos);
+
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+
+echo '<markers xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+do{
+
+echo'<marker id="".$row["id"]."" lat="".$row["lat"]."" lng="".$row["lng"]."" title="".$row["title"]."" content="".$row["content"]."" icon="".$row["icon"].""/>';
+
+}while($row=mysql_fetch_assoc($resultado));
+
+echo "</markers>";
+
+
 ?>
