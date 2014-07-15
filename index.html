@@ -70,6 +70,37 @@ function enviar(nom,dir,tel,mail,lat,lon){
 	function onSuccess(data){
 		alert(data);
 		}
+		
+		
+function EnviarServidor(image){
+                          
+                         
+	path = image.fullPath;
+  	name = image.name;
+                                
+	var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=image.name;
+    options.mimeType="image/jpeg";
+                               
+    var params = new Object();
+    params.fullpath = path;
+    params.name = name;
+
+    options.params = params;
+    options.chunkedMode = false;
+    var url="subir.php";
+    var url2="subir.php";
+    var ft = new FileTransfer();
+   ft.upload(image, url2, win, fail, options, true);
+                            }
+   function win(r) {
+   alert("Image uploaded successfully!!");
+                          }
+                          //Failure callback
+   function fail(error) {
+   alert("There was an error uploading image");
+                          } 
 	
 }
 </script>
@@ -82,7 +113,7 @@ function txtAge_onblur() {
    var txtAge = document.form1.txtAge;
    if (isNaN(txtAge.value) == true) {
       alert("Ingrese solo número telefónico");
-      txtAge.select();
+      <!--txtAge.select();-->
 	  <!--txtAge.focus();-->
       
    }
