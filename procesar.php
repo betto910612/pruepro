@@ -7,9 +7,9 @@ $telefono=$_POST["telefono"];
 $correo=$_POST["correo"];
 $latitud=$_POST["latitud"];
 $longitud=$_POST["longitud"];
-$direccion=$_POST["direccion"];
 
-$sql="INSERT INTO servicios(id, nombre, direccion, telefono, correo, latitud,longitud,direccion)VALUES('','$nombre','$direccion','$telefono','$correo','$latitud','$longitud','$direccion')";
+
+$sql="INSERT INTO servicios(id, nombre, direccion, telefono, correo, latitud,longitud,direccion)VALUES('','$nombre','$direccion','$telefono','$correo','$latitud','$longitud')";
 $resultado=mysql_query($sql,$con);
 
 if($resultado){
