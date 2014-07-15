@@ -8,8 +8,7 @@ $correo=$_POST["correo"];
 $latitud=$_POST["latitud"];
 $longitud=$_POST["longitud"];
 
-
-$sql="INSERT INTO servicios(id, nombre, direccion, telefono, correo, latitud,longitud)VALUES('','$nombre','$direccion','$telefono','$correo','$latitud','$longitud')";
+$sql="INSERT INTO servicios(id, nombre, direccion, telefono, correo, latitud, longitud)VALUES('','$nombre','$direccion','$telefono','$correo','$latitud','$longitud')";
 $resultado=mysql_query($sql,$con);
 
 if($resultado){
