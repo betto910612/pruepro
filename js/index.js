@@ -1,7 +1,4 @@
 var app = {
-	 
-        
-	
     initialize: function() {
         this.bindEvents();
     },
@@ -22,8 +19,7 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-        <!--destinationType: Camera.DestinationType.DATA_URL,--> 
-		destinationType: Camera.DestinationType.FILE_URI,
+        destinationType: Camera.DestinationType.DATA_URL, 
 		sourceType : Camera.PictureSourceType.CAMERA,
 		popoverOptions: CameraPopoverOptions,
 		saveToPhotoAlbum: true,
@@ -50,5 +46,5 @@ function onPhotoURISuccess(imageURI) {
 }
 
 function onFail(message) {
-    alert('Error debido a: ' + message);
+    alert('Error por: ' + message);
 }
