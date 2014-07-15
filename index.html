@@ -13,9 +13,8 @@
 
 <!--_______________________________________________________________-->
 
-<script type="text/javascript">
+<script>
 document.addEventListener("deviceready",function(){
-	
 	var boton=$("#guardar");
 	boton.tap(function(){
     var nom=$("#nombre").val();
@@ -64,61 +63,11 @@ function enviar(nom,dir,tel,mail,lat,lon){
 		}
 	
 }
-function consultando(data){
-	var registro=$.parseJSON(data);
-	var mostrar=$("#datos");
-	for( var i in registro){
-		mostrar.append("<table><tr><td>Id</td><td>"+registro[i].idauto+"</td></tr><tr><td>Marca</td><td>"+registro[i].Marca+"</td></tr><tr><td>Modelo</td><td>"+registro[i].Modelo+"</td></tr><tr><td>Color</td><td>"+registro[i].Color+"</td></tr><tr><td>Registro</td><td>"+registro[i].Precio+"</td></tr></table><br>");
-		}
-	
-//	alert(data);/
-	}
 </script>
 
 
-<script type="text/javascript">
-$(function(){
-$("#actua").click(function(){
-	//alert("Ejecucion correcta del boton");
-	var marA=$("#marcaan").val();
-	//alert("Nombre: "+nombre);
-	var marN=$("#marcanu").val();
-$.ajax({
-	type:"GET",
-	url:"actualizar.php",
-	data:({MarAntigua:marA,MarNueva:marN}),
-	cache:false,
-	dataType:"text",
-	success:exitosa
-});
-	})
-function exitosa(data){
-alert(data);
-}
-});
-</script>
 
-<script type="text/javascript">
-$(function(){
-$("#elimina").click(function(){
-	//alert("Ejecucion correcta del boton");
-	var marEl=$("#marcaElimi").val();
-$.ajax({
-	type:"GET",
-	url:"eliminar.php",
-	data:({MarEl:marEl}),
-	cache:false,
-	dataType:"text",
-	success:exitosa
-});
-	})
-function exitosa(data){
-alert(data);
-}
-});
-
-</script>
-<script type="text/javascript">
+<script>
 
 function txtAge_onblur() {
    var txtAge = document.form1.txtAge;
@@ -181,7 +130,10 @@ function coordenadas(position) {
 <input type="text" id="long" placeholder="'Longitud'"readonly="readonly"/>
 <br>
 
-<button id='btn' ontouchend="capturePhoto()">Tomar foto</button>
+
+<button id='btn' ontouchend="capturePhoto()">Tomar Foto</button>
+          
+
 <!--<a href="javascript:capturePhoto()" id="foto" data-role="button">Tomar Foto</a>-->
       <div id="foto"></div>
 <br>

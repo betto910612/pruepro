@@ -25,12 +25,11 @@ body {
 
 #foto{
     margin-top: 20px;
-    background-color: #ccc;
+    background-color: #CCC;
     background-position: center center;
     background-repeat: no-repeat;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 500px;
     border: none;
     height: auto
 }
