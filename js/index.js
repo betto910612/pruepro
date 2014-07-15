@@ -14,7 +14,6 @@ var app = {
 window.onload=function(){
     document.getElementById("foto").style.width = (window.innerWidth-50)+"px";
     document.getElementById("foto").style.height = (window.innerWidth-50)+"px";
-    document.getElementById("foto").style.backgroundImage="url('img/cordova.png')";
     document.getElementById("foto").style.backgroundSize="50% 50%";
 };
 
@@ -43,5 +42,5 @@ function onPhotoURISuccess(imageURI) {
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    alert('Error por: ' + message);
 }

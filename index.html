@@ -26,7 +26,7 @@ document.addEventListener("deviceready",function(){
 	if(nom!="" && dir!="" && tel!="" && mail!="" && lat!="" && lon!=""){
 	enviar(nom,dir,tel,mail,lat,lon);
 	}else{
-		alert('Favor de registrar datos en los campos');
+		alert('Favor llenar todos los campos');
 		}
 	
 	});
@@ -72,7 +72,7 @@ function enviar(nom,dir,tel,mail,lat,lon){
 function txtAge_onblur() {
    var txtAge = document.form1.txtAge;
    if (isNaN(txtAge.value) == true) {
-      alert("Ingrese solo numero telefónico");
+      alert("Ingrese solo número telefónico");
       txtAge.focus();
       txtAge.select();
    }
