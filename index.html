@@ -90,6 +90,24 @@ function txtAge_onblur() {
 </script>
 
 <!--_______________________________________________________________-->
+<script>
+
+function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);
+        }
+</script>
 <!--_______________________________________________________________-->
 <script>
 function obtener_localizacion() {
@@ -139,14 +157,11 @@ function coordenadas(position) {
 <input type="text" id="long" placeholder="'Longitud'" readonly/>
 <br>
 <a href="#" id="btn" data-role="button" onClick="capturePhoto()">Tomar Foto</a>
-<!--<a href="javascript:capturePhoto()" id="foto" data-role="button">Tomar Foto</a>-->
+<br>
  <div id="foto"></div>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 </form>
-
-
-
 </div>
 <div data-role="footer"data-theme="b" align="center">
 <p>@betto_1206</p>
