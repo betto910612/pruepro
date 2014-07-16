@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onPhotoURISuccess, uploadPhoto, onFail, { quality: 90,
+    navigator.camera.getPicture(onPhotoURISuccess, uploadPhoto, { quality: 90,
         <!--destinationType: Camera.DestinationType.DATA_URL,
 		destinationType: Camera.DestinationType.FILE_URI,
 		correctOrientation: true,
