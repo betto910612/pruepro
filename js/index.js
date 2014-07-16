@@ -18,11 +18,8 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 90,
         destinationType: Camera.DestinationType.DATA_URL, 
-		sourceType : Camera.PictureSourceType.CAMERA,
-		popoverOptions: CameraPopoverOptions,
-		saveToPhotoAlbum: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
