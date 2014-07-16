@@ -39,7 +39,9 @@ function onPhotoDataSuccess(imageData) {
 
 function capturePhoto() {
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 90,
-        destinationType: destinationType.DATA_URL });
+        destinationType: destinationType.DATA_URL,
+		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		 });
     }
 
 
