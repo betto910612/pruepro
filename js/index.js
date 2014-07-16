@@ -17,15 +17,30 @@ window.onload=function(){
     document.getElementById("foto").style.backgroundSize="50% 50%";
 };
 
+
+function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, onPhotoURISuccess, { quality: 90,
-        <!--destinationType: Camera.DestinationType.DATA_URL,
-		destinationType: Camera.DestinationType.FILE_URI,
-		correctOrientation: true,
-        targetWidth: 1000,
-        targetHeight: 1000
-    });
-}
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 90,
+        destinationType: destinationType.DATA_URL });
+    }
 
 
 function onSuccess(imageData) {
@@ -40,24 +55,6 @@ function onPhotoURISuccess(imageURI) {
     document.getElementById("foto").style.backgroundSize="100% 100%";
 }
 
-
-function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-            var params = {};
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);
-        }
-		
-		
 
 function onFail(message) {
     alert('Error por: ' + message);
