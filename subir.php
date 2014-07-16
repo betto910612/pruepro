@@ -18,6 +18,6 @@ if ($_FILES["file"]["error"] > 0) {
 		move_uploaded_file($_FILES["file"]["tmp_name"], $var.'/' . $_FILES["file"]["name"]);
 $sql='INSERT INTO servicios (imagen) VALUES ($var.'/'.$_FILES["file"]["name"])';
 	}
-	
+	echo "Se guardo de manera correcta";  
 }
 ?>
