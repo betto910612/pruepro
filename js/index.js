@@ -18,14 +18,13 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, 
-	function(message) { alert('get picture failed'); },
-                {
-          quality         : 90,
-          destinationType : navigator.camera.DestinationType.FILE_URI,
-          sourceType      : navigator.camera.PictureSourceType.PHOTOLIBRARY
-                }
-            );
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
+        <!--destinationType: Camera.DestinationType.DATA_URL,
+		destinationType: Camera.DestinationType.FILE_URI,
+		correctOrientation: true,
+        targetWidth: 1000,
+        targetHeight: 1000
+    });
 }
 
 
