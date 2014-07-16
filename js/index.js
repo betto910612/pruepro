@@ -21,6 +21,7 @@ function capturePhoto() {
     navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 90,
         <!--destinationType: Camera.DestinationType.DATA_URL,
 		destinationType: Camera.DestinationType.FILE_URI,
+		correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
