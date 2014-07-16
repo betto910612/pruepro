@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onPhotoURISuccess, uploadPhoto, 
+    navigator.camera.getPicture(uploadPhoto, 
 	function(message) { alert('get picture failed'); },
                 {
           quality         : 90,
