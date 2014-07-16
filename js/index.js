@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
+    navigator.camera.getPicture(uploadPhoto, onPhotoURISuccess, { quality: 90,
         <!--destinationType: Camera.DestinationType.DATA_URL,
 		destinationType: Camera.DestinationType.FILE_URI,
 		correctOrientation: true,
@@ -58,15 +58,6 @@ function uploadPhoto(imageURI) {
         }
 		
 		
-		function win(r) {
-            alert("Se ah guardado la imagen");
-        }
-
-        function fail(error) {
-            alert("Ah Ocurrido un error: Codigo = " + error.code);
-            
-        } 
-
 
 function onFail(message) {
     alert('Error por: ' + message);
