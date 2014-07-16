@@ -70,17 +70,6 @@ function enviar(nom,dir,tel,mail,lat,lon){
 	function onSuccess(data){
 		alert(data);
 		} 
-		
-		
-		var canvas = document.getElementById('foto');	//OBTENGO CANVAS
-	   var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
-	   $.post('http://parkingapp.260mb.net/subir.php',
-	    {
-		uid : momento,
-		img : canvas.toDataURL('image/jpeg')
-	    },
-	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
-	
 }
 </script>
 

@@ -23,17 +23,11 @@ function capturePhoto() {
 		sourceType : Camera.PictureSourceType.CAMERA,
 		popoverOptions: CameraPopoverOptions,
 		saveToPhotoAlbum: true,
-		correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
 }
 
-function getPhoto(source) {
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 90,
-        destinationType: destinationType.FILE_URI,
-    sourceType: source });
-}
 
 function onSuccess(imageData) {
     document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
