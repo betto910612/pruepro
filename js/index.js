@@ -18,15 +18,10 @@ window.onload=function(){
 };
 
 
-function onPhotoDataSuccess(imageData) {
-      var smallImage = document.getElementById('smallImage');
-      smallImage.style.display = 'block';
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
 
 
 function capturePhoto() {
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 90,
+      navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
         destinationType: destinationType.DATA_URL,
 		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
 		 });
