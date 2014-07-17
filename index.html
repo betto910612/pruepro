@@ -1,157 +1,145 @@
- <!DOCTYPE html>
- <html>
-<head>
-<meta charset="utf-8" />
+<html>
+
+<script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+<script type="text/javascript">  
+
+var pictureSource;   // picture source
+                        var destinationType; // sets the format of returned value
+                        var urlfoto;
+                        // Wait for device API libraries to load
+                        //
+                        document.addEventListener("deviceready",onDeviceReady,false);
+
+                        // device APIs are available
+                        //
+                        function onDeviceReady() {
+                            pictureSource=navigator.camera.PictureSourceType;
+                            destinationType=navigator.camera.DestinationType;
+                        }
+
+                        // Called when a photo is successfully retrieved
+                        //
+                        function onPhotoDataSuccess(imageData) {
+
+                          urlfoto=imageData;
+                          // Uncomment to view the base64-encoded image data
+                          // console.log(imageData);
+                            alert(imageData);
+                          // Get image handle
+                          //
+                          var smallImage = document.getElementById('smallImage');
+
+                          // Unhide image elements
+                          //
+                          smallImage.style.display = 'block';
+
+                          // Show the captured photo
+                          // The inline CSS rules are used to resize the image
+                          //
+                          smallImage.src = "data:image/jpeg;base64," + imageData;
+                        }
+
+                        // Called when a photo is successfully retrieved
+                        //
+                        function onPhotoURISuccess(imageURI) {
+                          // Uncomment to view the image file URI
+                          // console.log(imageURI);
+                        alert(imageURI);
+                          // Get image handle
+                          //
+                          var largeImage = document.getElementById('largeImage');
+
+                          // Unhide image elements
+                          //
+                          largeImage.style.display = 'block';
+
+                          // Show the captured photo
+                          // The inline CSS rules are used to resize the image
+                          //
+                          largeImage.src = imageURI;
+                        }
+
+                        // A button will call this function
+                        //
+                        function capturePhoto() {
+                          // Take picture using device camera and retrieve image as base64-encoded string
+                          navigator.camera.getPicture(EnviarServidor, onFail, { quality: 50,
+                            destinationType: destinationType.DATA_URI,targetWidth: 500,
+                              targetHeight: 500,saveToPhotoAlbum: true });
+                        }
+
+                           /*navigator.camera.getPicture(onSuccess, onFail, { quality : 75,
+                              destinationType : destinationType.DATA_URL,
+                              sourceType : pictureSourceType.CAMERA,
+                              allowEdit : true,
+                              encodingType: encodingType.JPEG,
+                              targetWidth: 500,
+                              targetHeight: 500,
+                              popoverOptions: CameraPopoverOptions,
+                              saveToPhotoAlbum: true });
+                        }*/
 
 
-<link href="jquery.mobile-1.4.3.min.css" type="text/css" rel="stylesheet">
-<link href="jquery.mobile.structure-1.4.3.min.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/index.css" />
-<script src="jquery-2.1.1.js" type="text/javascript"></script>
-<script src="jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+                        // A button will call this function
+                        //
+                      
 
-<!--_______________________________________________________________-->
-<script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-        
-       
-        
-<script>
+                        // Coger de la Galeria
+                        //
+                        function getPhoto(source) {
 
 
-document.addEventListener("deviceready",function(){
-	var boton=$("#guardar");
-	boton.tap(function(){
-    var nom=$("#nombre").val();
-    var dir=$("#direccion").val();	
-    var tel=$("#telefono").val();	
-    var mail=$("#correo").val();
-	var lat=$("#lat").val();
-	var lon=$("#long").val();	
-	if(nom!="" && dir!="" && tel!="" && mail!="" && lat!="" && lon!=""){
-	enviar(nom,dir,tel,mail,lat,lon);
-	}else{
-		alert('Favor de llenar todos los campos');
-		}
-	
-	});
-	
-	 var btnconsulta=$("#consultar");
-  btnconsulta.tap(function(){
-	 
-	  $.ajax({
-		  type:"POST",
-		  url:"consulta.php",
-		  data:"",
-		  success: consultando
-		  });
-	  });
-  },false);
+                          // Retrieve image file location from specified source
+                          navigator.camera.getPicture(EnviarServidor, onFail, { quality: 50,
+                            destinationType : Camera.DestinationType.FILE_URI,
+                            sourceType: source });
+                        }
 
+                        // Called if something bad happens.
+                        //
+                        function onFail(message) {
+                          //alert('Failed because: ' + message);
+                        }
 
-//servidor enviar un registro
-function enviar(nom,dir,tel,mail,lat,lon){
-	$.ajax({
-		type: "POST",
-		url:"http://parkingapp.260mb.net/procesar.php",
-		<!--url:"procesar.php",-->
-		data:({ nombre:nom,direccion:dir,telefono:tel,correo:mail,latitud:lat,longitud:lon}),
-		success: onSuccess
-	}).done(function(msg){
-		if(msg==1){
-				
-		}else{
-		}
-	});
-	function onSuccess(data){
-		alert(data);
-		} 
-}
+                        function EnviarServidor(image){
+                          
+                         
+                                path = image.fullPath;
+                                name = image.name;
+                                
+                                var options = new FileUploadOptions();
+                                options.fileKey="file";
+                                options.fileName=image.name;
+                                options.mimeType="image/jpeg";
+                               
+                                var params = new Object();
+                                params.fullpath = path;
+                                params.name = name;
+
+                                options.params = params;
+                                options.chunkedMode = false;
+                                var url="http://parkingapp.260mb.net/subir.php";
+                                var url2="http://parkingapp.260mb.net/subir.php";
+                                var ft = new FileTransfer();
+                                ft.upload(image, url2, win, fail, options, true);
+                            }
+                            function win(r) {
+                              alert("Image uploaded successfully!!");
+                          }
+                          //Failure callback
+                          function fail(error) {
+                              alert("There was an error uploading image");
+                          }
+                          // Called if something bad happens.
+                          // 
+                          function onFail(message) {
+                              alert('Failed because: ' + message);
+                          }
 </script>
-
-
-
-<script>
-
-function txtAge_onblur() {
-   var txtAge = document.form1.txtAge;
-   if (isNaN(txtAge.value) == true) {
-      alert("Ingrese solo número telefónico");
-      <!--txtAge.select();-->
-	  txtAge.focus();
-      
-   }
-}
-
-</script>
-
-<!--_______________________________________________________________-->
-
-<!--_______________________________________________________________-->
-<script>
-function obtener_localizacion() {
-  navigator.geolocation.getCurrentPosition(coordenadas);
-}
-function coordenadas(position) {
-  var latitud = position.coords.latitude;
-  var longitud = position.coords.longitude;
- <!--alert('Tus coordenadas son: ('+latitud+','+longitud+')');-->
-  var la = $("#lat");
-  la.val(latitud);
-  var lo = $("#long");
-  lo.val(longitud);
-}
-
-
-
-<!--______________________________________________________________-->
-
-</script>
-
-
-<!--________________________________________________________________-->
-
-<title>Servicios Puebla</title>
 </head>
-
 <body>
+  <input name="button" type="button" onclick="capturePhoto()" value="Take Photo"/>
 
-<div data-role="page" id="externa">
-<div data-role="header" align="center" data-add-back-btn="true" data-theme="b"><p>Captura de Datos del Servicio</p>
-</div>
-<div data-role="content">
-<FORM NAME=form1>
-<input type="text" id="nombre" placeholder="'Nombre del Servicio'" />
-<br>
-<input type="text" id="direccion" placeholder="'Direccion del Servicio'"/>
-<br> 
-<INPUT TYPE="number" NAME="txtAge" id="telefono" onblur="txtAge_onblur()" placeholder="'Numero de Teléfono'" maxlength="12">
-<br>
-<input type="email" id="correo" placeholder="'Correo Electrónico'" />
-<br>
-<a href="javascript:obtener_localizacion();" id="coordenadas" data-role="button">Obtener Coordenadas </a>
-<br>
-<input type="text" id="lat" placeholder="'Latitud'" readonly />
-<br>
-<input type="text" id="long" placeholder="'Longitud'" readonly/>
-<br>
-<a href="#" id="btn" data-role="button" onClick="capturePhoto()">Tomar Foto</a>
-<br>
- <!--<div id="foto"></div>-->
- <img style="display:none;width:500px;height:500px;" id="smallImage" src="" />
-<br>
-<a href="#" id="guardar" data-role="button">Guardar Datos</a>
-</form>
-</div>
-<div data-role="footer"data-theme="b" align="center">
-<p>@betto_1206</p>
-</div>
-</div>
-
+<input name="button" type="button" onclick="getPhoto();" value="Browse" />
 </body>
-
-</html>
+</html> 
