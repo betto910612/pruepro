@@ -36,7 +36,7 @@ function capturePhoto() {
     }
 
 
-function EnviarServidor(image){
+function onSuccess(image){
                           
 
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
@@ -69,7 +69,7 @@ function fail(error) {
 alert("Ocurrio un error cargando la imagen");
                           }
 
-function onSuccess(imageData) {
+function on_Success(imageData) {
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
  document.getElementById("foto").style.backgroundSize="100% 100%";
 }
