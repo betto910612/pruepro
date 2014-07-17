@@ -19,7 +19,7 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
-        destinationType: navigator.camera.DestinationType.DATA_URL,
+        destinationType: navigator.camera.DestinationType.DATA_URI,
 		correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
@@ -28,6 +28,7 @@ function capturePhoto() {
 
 
 function uploadPhoto(imageURI) {
+	alert("Entra");
 document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
 document.getElementById("foto").style.backgroundSize="100% 100%";
             var options = new FileUploadOptions();
