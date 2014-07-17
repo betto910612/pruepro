@@ -22,8 +22,10 @@ window.onload=function(){
 
 function capturePhoto() {
       navigator.camera.getPicture(EnviarServidor, onFail, { quality: 90,
-        destinationType: destinationType.DATA_URL,
-		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: camera.destinationType.DATA_URL,
+		correctOrientation: true,
+        targetWidth: 1000,
+        targetHeight: 1000
 		 });
     }
 
