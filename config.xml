@@ -5,9 +5,20 @@
        
     </description>
     <author email="betto2211@gmail.com">
-        PhoneGap Team
+        Teco Team
     </author>
-	<access origin="http://tuserver.es" />
+	
+	<feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+	<access origin="*" />
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.4.0" />
     <preference name="orientation" value="default" />
