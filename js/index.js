@@ -21,18 +21,23 @@ function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
         destinationType: navigator.camera.DestinationType.DATA_URI,
 		correctOrientation: true,
-        targetWidth: 1000,
-        targetHeight: 1000
+        targetWidth: 500,
+        targetHeight: 500
     });
 }
 
 
 function uploadPhoto(imageURI) {	
-document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
-document.getElementById("foto").style.backgroundSize="100% 100%";
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+var smallImage = document.getElementById('smallImage');
+ 
+    // Mostrar elemento de imagen
+    smallImage.style.display = 'block';
+ 
+    // Mostrar la foto capturada
+    smallImage.src = "data:image/jpeg;base64," + imageURI;
+  var options = new FileUploadOptions();
+  options.fileKey="file";
+  options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
  
             var params = new Object();
