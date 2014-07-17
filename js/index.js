@@ -57,7 +57,7 @@ options.chunkedMode = false;
 var url="http://parkingapp.260mb.net/subir.php";
 var url2="http://parkingapp.260mb.net/subir.php";
 var ft = new FileTransfer();
-ft.upload(image, url, win, fail, options, true);
+ft.upload(image, url2, win, fail, options, true);
                             }
 function win(r) {
  alert("Imagen cargada al servidor!!");
