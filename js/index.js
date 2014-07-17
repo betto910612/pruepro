@@ -1,41 +1,95 @@
-var app = {
-    initialize: function() {
-        this.bindEvents();
-    },
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-};
-
-window.onload=function(){
-    document.getElementById("foto").style.width = (window.innerWidth-50)+"px";
-    document.getElementById("foto").style.height = (window.innerWidth-50)+"px";
-    document.getElementById("foto").style.backgroundSize="50% 50%";
-};
+<!------------------------------------------------------------------------->
 
 
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value
+var urlfoto;
+                        // Wait for device API libraries to load
+                        //
+document.addEventListener("deviceready",onDeviceReady,false);
 
+                        // device APIs are available
+                        //
+function onDeviceReady() {
+ictureSource=navigator.camera.PictureSourceType;
+destinationType=navigator.camera.DestinationType;
+                        }
 
+                        // Called when a photo is successfully retrieved
+                        //
+function onPhotoDataSuccess(imageData) {
+
+urlfoto=imageData;
+                          // Uncomment to view the base64-encoded image data
+                          // console.log(imageData);
+alert(imageData);
+                          // Get image handle
+                          //
+var smallImage = document.getElementById('smallImage');
+
+                          // Unhide image elements
+                          //
+smallImage.style.display = 'block';
+
+                          // Show the captured photo
+                          // The inline CSS rules are used to resize the image
+                          //
+smallImage.src = "data:image/jpeg;base64," + imageData;
+                        }
+
+                        // Called when a photo is successfully retrieved
+                        //
+function onPhotoURISuccess(imageURI) {
+                          // Uncomment to view the image file URI
+                          // console.log(imageURI);
+alert(imageURI);
+                          // Get image handle
+                          //
+var largeImage = document.getElementById('largeImage');
+
+                          // Unhide image elements
+                          //
+largeImage.style.display = 'block';
+
+                          // Show the captured photo
+                          // The inline CSS rules are used to resize the image
+                          //
+largeImage.src = imageURI;
+                        }
+
+                        // A button will call this function
+                        //
 function capturePhoto() {
-	
-	navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
-    destinationType: destinationType.FILE_URI,
-	correctOrientation: true,
-	targetWidth: 1000,
-    targetHeight: 1000,
-	saveToPhotoAlbum: true }); 
-      /*navigator.camera.getPicture(EnviarServidor, onFail, { quality: 90,
-        destinationType: camera.destinationType.DATA_URL,
-		correctOrientation: true,
-        targetWidth: 1000,
-        targetHeight: 1000
-		 });*/
-    }
+                          // Take picture using device camera and retrieve image as base64-encoded string
+ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+destinationType:destinationType.DATA_URI,
+targetWidth: 500,
+targetHeight: 500,
+saveToPhotoAlbum: true });
+                        }
 
+
+                        // A button will call this function
+                        //
+                      
+
+                        // Coger de la Galeria
+                        //
+function getPhoto(source) {
+ navigator.camera.getPicture(EnviarServidor, onFail, { quality: 50,
+destinationType : Camera.DestinationType.FILE_URI,
+                            sourceType: source });
+                        }
+
+                      
+function onFail(message) {
+                          //alert('Failed because: ' + message);
+                        }
+
+
+
+
+<!------------------------------------------------------------------------->
 
 function onSuccess(image){
 document.getElementById("foto").style.backgroundImage="url('"+image+"')";
@@ -65,20 +119,7 @@ var url2="http://parkingapp.260mb.net/subir.php";
 var ft = new FileTransfer();
 ft.upload(image, url2, options, true);
                             }
-							
-function on_Success(imageData) {
-document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
- document.getElementById("foto").style.backgroundSize="100% 100%";
-}
-
-
-
-function onPhotoURISuccess(imageURI) {
-document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
-document.getElementById("foto").style.backgroundSize="100% 100%";
-}
-
-
+						
 function onFail(message) {
     alert('Error por: ' + message);
 }
