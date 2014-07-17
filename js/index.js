@@ -22,7 +22,7 @@ window.onload=function(){
 
 function capturePhoto() {
 	
-	navigator.camera.getPicture(EnviarServidor, onFail, { quality: 90,
+	navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
     destinationType: destinationType.DATA_URI,
 	targetWidth: 500,
     targetHeight: 500,
