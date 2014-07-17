@@ -36,8 +36,8 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
 	
-	<gap:plugin name="File" value="org.apache.cordova.FileUtils" />
-	<gap:plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" /> 
+	<plugin name="File" value="org.apache.cordova.FileUtils" />
+	<plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" /> 
 	
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
