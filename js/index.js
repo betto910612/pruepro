@@ -39,7 +39,13 @@ function capturePhoto() {
 
 function onSuccess(image){
 document.getElementById("foto").style.backgroundImage="url('"+image+"')";
-document.getElementById("foto").style.backgroundSize="100% 100%";                                                  
+document.getElementById("foto").style.backgroundSize="100% 100%";
+
+if (image.substring(0,21)=="content://com.android") {
+photo_split=image.split("%3A");
+image="content://media/external/images/media/"+photo_split[1];
+ } 
+                                                 
 path = image.fullPath;
 name = image.name;
                                 
@@ -59,6 +65,7 @@ var url2="http://parkingapp.260mb.net/subir.php";
 var ft = new FileTransfer();
 ft.upload(image, url2, options, true);
                             }
+							
 function on_Success(imageData) {
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
  document.getElementById("foto").style.backgroundSize="100% 100%";
