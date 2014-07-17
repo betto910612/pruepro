@@ -7,6 +7,7 @@
     <author email="betto2211@gmail.com">
         PhoneGap Team
     </author>
+	<access origin="http://tuserver.es" />
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.4.0" />
     <preference name="orientation" value="default" />
@@ -23,6 +24,8 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+	<plugin name="File" value="org.apache.cordova.FileUtils" />
+	<plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" /> 
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
