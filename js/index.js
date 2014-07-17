@@ -27,8 +27,7 @@ function capturePhoto() {
 }
 
 
-function uploadPhoto(imageURI) {
-	alert("Entra");
+function uploadPhoto(imageURI) {	
 document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
 document.getElementById("foto").style.backgroundSize="100% 100%";
             var options = new FileUploadOptions();
@@ -45,6 +44,7 @@ document.getElementById("foto").style.backgroundSize="100% 100%";
  
             var ft = new FileTransfer();
             ft.upload(imageURI, "http://parkingapp.260mb.net/subir.php", win, fail, options);
+			alert("Foto Almacenada");
         }
 
 
