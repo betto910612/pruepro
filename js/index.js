@@ -24,8 +24,9 @@ function capturePhoto() {
 	
 	navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
     destinationType: destinationType.DATA_URI,
-	targetWidth: 500,
-    targetHeight: 500,
+	correctOrientation: true,
+	targetWidth: 1000,
+    targetHeight: 1000,
 	saveToPhotoAlbum: true }); 
       /*navigator.camera.getPicture(EnviarServidor, onFail, { quality: 90,
         destinationType: camera.destinationType.DATA_URL,
