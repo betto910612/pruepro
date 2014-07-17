@@ -18,18 +18,39 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
         destinationType: navigator.camera.DestinationType.DATA_URL,
-        sourceType: 	navigator.camera.PictureSourceType.PHOTOLIBRARY,
 		correctOrientation: true,
         targetWidth: 1000,
         targetHeight: 1000
     });
 }
 
+
+function uploadPhoto(imageURI) {
+document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+document.getElementById("foto").style.backgroundSize="100% 100%";
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://parkingapp.260mb.net/subir.php", win, fail, options);
+        }
+
+
+
 function onSuccess(imageData) {
-    document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
-    document.getElementById("foto").style.backgroundSize="100% 100%";
+document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
+document.getElementById("foto").style.backgroundSize="100% 100%";
 }
 
 function onPhotoURISuccess(imageURI) {
