@@ -57,16 +57,8 @@ options.chunkedMode = false;
 var url="http://parkingapp.260mb.net/subir.php";
 var url2="http://parkingapp.260mb.net/subir.php";
 var ft = new FileTransfer();
-ft.upload(image, url2, win, fail, options, true);
+ft.upload(image, url2, options, true);
                             }
-function win(r) {
- alert("Imagen cargada al servidor!!");
-                          }
-                          //Failure callback
-function fail(error) {
-alert("Ocurrio un error cargando la imagen");
-                          }
-
 function on_Success(imageData) {
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
  document.getElementById("foto").style.backgroundSize="100% 100%";
