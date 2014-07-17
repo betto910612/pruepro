@@ -1,27 +1,64 @@
-var pictureSource;   // Permitirá obtener la Fuente de la Foto
-var destinationType; // Permitirá Definir el formato de retorno
-// Esta función es llamada cuando la foto es obtenida satisfactoriamente
-function onPhotoDataSuccess(imageData) {
-    // Get image handle
-    var smallImage = document.getElementById('smallImage');
- 
-    // Mostrar elemento de imagen
-    smallImage.style.display = 'block';
- 
-    // Mostrar la foto capturada
-    smallImage.src = "data:image/jpeg;base64," + imageData;
-}
- 
-//Esta función es llamada por el botón que agregamos en el fichero /index.html
+var app = {
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+};
+
+window.onload=function(){
+    document.getElementById("foto").style.width = (window.innerWidth-50)+"px";
+    document.getElementById("foto").style.height = (window.innerWidth-50)+"px";
+    document.getElementById("foto").style.backgroundSize="50% 50%";
+};
+
 function capturePhoto() {
-    // Tomar foto usando la cámara del dispositivo y devolviendo una imagen en formato 
-    // string de base64 encodificado
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-     destinationType: destinationType.DATA_URL });
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
+        destinationType: navigator.camera.DestinationType.DATA_URI,
+		correctOrientation: true,
+        targetWidth: 1000,
+        targetHeight: 1000
+    });
 }
+
+
+function uploadPhoto(imageURI) {	
+document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+document.getElementById("foto").style.backgroundSize="100% 100%";
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
  
-//En caso de que exista un fallo durante la llamada de la interfaz con la cámara del dispositivo 
-//Se dispara el llamado a esta función 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://parkingapp.260mb.net/subir.php", win, fail, options);
+			alert("Foto Almacenada");
+        }
+
+
+
+function onSuccess(imageData) {
+document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
+document.getElementById("foto").style.backgroundSize="100% 100%";
+}
+
+function onPhotoURISuccess(imageURI) {
+    document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+    document.getElementById("foto").style.backgroundSize="100% 100%";
+}
+
 function onFail(message) {
-   alert('Error debido a: ' + message);
+    alert('Error por: ' + message);
 }
