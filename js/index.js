@@ -12,20 +12,20 @@ var app = {
 };
 
 window.onload=function(){
-    document.getElementById("foto").style.width = (window.innerWidth-50)+"px";
+    document.getElementById("foto")/*.style.width = (window.innerWidth-50)+"px";
     document.getElementById("foto").style.height = (window.innerWidth-50)+"px";
-    document.getElementById("foto").style.backgroundSize="50% 50%";
+    document.getElementById("foto").style.backgroundSize="50% 50%";*/
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(subirFoto, onFail, { quality: 50,
+    navigator.camera.getPicture(subirFoto, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
 		mediaType: Camera.MediaType.ALLMEDIA,
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
-        targetWidth: 500,
+        targetWidth: 350,
         targetHeight: 500
     });
 }
@@ -102,7 +102,7 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
 
 			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
             var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);
+            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), options);
 			alert("sube");	
 			
         }
