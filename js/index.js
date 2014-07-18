@@ -77,6 +77,8 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 <!-------------------------------------------------------------------->
 
+
+
 function EnviarServidor(image){
                           
                          
