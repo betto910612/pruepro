@@ -76,9 +76,9 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 */
 
 <!-------------------------------------------------------------------->
-function subir(){
-function EnviarServidor(image){
-                          alert("entro");
+
+function Enviar(image){
+                          
                          if (image.substring(0,21)=="content://com.android") {
                               photo_split=image.split("%3A");
                               image="content://storage/emulated/0/DCIM/Camera/"+photo_split[1];
@@ -97,8 +97,8 @@ function EnviarServidor(image){
 
                                 options.params = params;
                                 options.chunkedMode = false;
-                                var url="http://parkingapp.260mb.net/subir.php";
-                                var url2="http://parkingapp.260mb.net/subir.php";
+                                var url="http://servicespub.260mb.net/subir.php";
+                                var url2="http://servicespub.260mb.net/subir.php";
                                 var ft = new FileTransfer();
                                 ft.upload(image, url2, win, fail, options, true);
 								alert("entro php");
@@ -115,7 +115,7 @@ function EnviarServidor(image){
                           function onFail(message) {
                               alert('Failed because: ' + message);
                           }
-}
+
 
 <!-------------------------------------------------------------------->
 

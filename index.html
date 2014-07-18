@@ -56,7 +56,7 @@ document.addEventListener("deviceready",function(){
 function enviar(nom,dir,tel,mail,lat,lon){
 	$.ajax({
 		type: "POST",
-		url:"http://parkingapp.260mb.net/procesar.php",
+		url:"http://servicespub.260mb.net/procesar.php",
 		<!--url:"procesar.php",-->
 		data:({ nombre:nom,direccion:dir,telefono:tel,correo:mail,latitud:lat,longitud:lon}),
 		success: onSuccess
@@ -145,13 +145,13 @@ function coordenadas(position) {
 <img id="foto" src="" />
 </p>
 <br>
-<a href="#" id="guardar" onClick="subir()" data-role="button">Guardar Datos</a>
+<a href="#" id="guardar" onClick="Enviar()" data-role="button">Guardar Datos</a>
 <br> 
 <input type="reset" value="Nuevo Registro">
 </form>
 </div>
 <div data-role="footer"data-theme="b" align="center">
-<p>@betto_1206</p>
+<p>Developed by: @betto_1206 & @johnmsi </p>
 </div>
 </div>
 
