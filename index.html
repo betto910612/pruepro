@@ -55,7 +55,7 @@ function enviar(nom,dir,tel,mail,lat,lon,canvas){
 		type: "POST",
 		url:"http://servicespub.260mb.net/procesar.php",
 		<!--url:"procesar.php",-->
-		data: "nombre=" + nom + "&direccion=" + dir + "&telefono=" + tel + "&correo=" + mail + "&latitud=" + lat + "&longitud=" + long +"&Canvas"+canvas,
+		data: "nombre=" + nom + "&direccion=" + dir + "&telefono=" + tel + "&correo=" + mail + "&latitud=" + lat + "&longitud=" + lon +"&Canvas"+canvas,
 		success: onSuccess
 	}).done(function(msg){
 		if(msg==1){
