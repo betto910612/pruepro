@@ -102,7 +102,7 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
 
 			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
             var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), options);
+            ft.upload(imageURI,"http://parkingapp.260mb.net/subir.php", options);
 			alert("sube");	
 			
         }
