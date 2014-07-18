@@ -18,10 +18,10 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
         destinationType: Camera.DestinationType.DATA_URL,
 		sourceType : Camera.PictureSourceType.CAMERA,
-		encodingType :  Camera.EncodingType.JPEG,
+		encodingType :  Camera.EncodingType.PNG,
 		mediaType: Camera.MediaType.ALLMEDIA,
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
