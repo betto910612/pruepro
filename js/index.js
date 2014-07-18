@@ -28,7 +28,7 @@ function capture() {
 
 
 
-
+/*
    var cameraoptions = { quality : 60,
                 destinationType : Camera.DestinationType.FILE_URI,
                 sourceType : Camera.PictureSourceType.CAMERA,
@@ -41,10 +41,10 @@ function capture() {
                 correctOrientation: true,
                 cameraDirection:Camera.Direction.FRONT
             };
-
+*/
             function onSuccess(imageData){
                
-                var image = document.getElementById('pic');
+                var image = document.getElementById("pic");
                 
  if (cameraoptions.destinationType ==Camera.DestinationType.FILE_URI){
                     image.src = imageData;
@@ -56,11 +56,17 @@ function capture() {
            
             
 function capturePhoto(){
-cameraoptions ={sourceType : Camera.PictureSourceType.CAMERA,
-                    destinationType : Camera.DestinationType.FILE_URI,
-                    targetWidth : 320,
-                    targetHeight : 240};
-navigator.camera.getPicture(onSuccess,onFail,cameraoptions);
+navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
+                destinationType : Camera.DestinationType.FILE_URI,
+                sourceType : Camera.PictureSourceType.CAMERA,
+                allowEdit : true,
+                encodingType :  Camera.EncodingType.JPEG,
+                targetWidth : 250,
+                targetHeight : 400,
+                mediaType: Camera.MediaType.ALLMEDIA,
+                saveToPhotoAlbum : true,
+                correctOrientation: true,
+                cameraDirection:Camera.Direction.FRONT});
             }
 
 
