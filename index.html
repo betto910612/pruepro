@@ -118,10 +118,10 @@ function coordenadas(position) {
 }
 
 
-var limpiar = document.getElementById("limpiar");
-limpiar.addEventListener("click",function(){
-	canvas.width=canvas.width;
-},false);
+document.getElementById("limpiar").addEventListener('click', function() {
+context.clearRect(0, 0, canvas.width, canvas.height);
+      }, false);
+
 
 
 <!--______________________________________________________________-->
@@ -159,7 +159,7 @@ limpiar.addEventListener("click",function(){
  
  <p align="center">
 
-<canvas id="foto" ></canvas>
+<canvas id="foto"></canvas>
 </p>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
