@@ -118,15 +118,19 @@ function coordenadas(position) {
 }
 
 
-document.getElementById("limpiar").addEventListener('click', function() {
-context.clearRect(0, 0, canvas.width, canvas.height);
-      }, false);
 
 
 
 <!--______________________________________________________________-->
 
 </script> 
+
+<script type="text/javascript">
+document.getElementById("limpiar").addEventListener('click', function() {
+context.clearRect(0, 0, canvas.width, canvas.height);
+      }, false);
+
+</script>
 <!--________________________________________________________________-->
 
 <title>Servicios Puebla</title>
@@ -159,12 +163,12 @@ context.clearRect(0, 0, canvas.width, canvas.height);
  
  <p align="center">
 
-<canvas height="350px" width="300px" id="foto"></canvas>
+<canvas height="350px" width="350px" id="foto"></canvas>
 </p>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 <br> 
-<input type="reset" id="limpiar" value="Nuevo Registro">
+<input type="button" id="limpiar" value="Nuevo Registro">
 </form>
 </div>
 <div data-role="footer"data-theme="b" align="center">
