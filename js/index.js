@@ -80,20 +80,9 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 function uploadPhoto(imageURI) {	
 document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
     document.getElementById("foto").style.backgroundSize="100% 100%";
-  var options = new FileUploadOptions();
-  options.fileKey="file";
-  options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
+  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", win, fail, options);
+            ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", options);
 			alert("Foto Almacenada");
         }
 
