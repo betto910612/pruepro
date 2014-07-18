@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
+    navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
@@ -77,32 +77,13 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 <!-------------------------------------------------------------------->
 
-function uploadPhoto(imageURI) {	
-
-document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
-    document.getElementById("foto").style.backgroundSize="100% 100%";
-	
-  var options = new FileUploadOptions();
-  options.fileKey="file";
-  options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", options);
-			
-        }
-
-
-<!-------------------------------------------------------------------->
-/*function Enviar(image){
-var options = new FileUploadOptions();
+function EnviarServidor(image){
+                          
+                         
+                                path = image.fullPath;
+                                name = image.name;
+                                
+                                var options = new FileUploadOptions();
                                 options.fileKey="file";
                                 options.fileName=image.name;
                                 options.mimeType="image/jpeg";
@@ -115,9 +96,8 @@ var options = new FileUploadOptions();
                                 options.chunkedMode = false;
                                 var url="http://servicespub.260mb.net/subir.php";
                                 var url2="http://servicespub.260mb.net/subir.php";
-								
                                 var ft = new FileTransfer();
-                                ft.upload(image, url2, win, fail, options, true);alert("hey");
+                                ft.upload(image, url2, win, fail, options, true);
                             } 
 <!-------------------------------------------------------------------->
 
@@ -137,7 +117,7 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
 			//Parametros clave:valor;
             var params = new Object();
             /*params.value_latitud = latitud;
-            params.value_longitud = longitud;
+            params.value_longitud = longitud;*/
 			params.value1 = "test";
             params.value2 = "param";
 			
@@ -146,10 +126,41 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
 
 			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
             var ft = new FileTransfer();
-            ft.upload(imageURI,"http://servicespub.260mb.net/subir.php", options);
+            ft.upload(imageURI,"http://parkingapp.260mb.net/subir.php", options);
 			alert("sube");	
 			
+        }
+
+
+
+
+/*
+function uploadPhoto(imageURI) {	
+var smallImage = document.getElementById("smallImage");
+ 
+    // Mostrar elemento de imagen
+    smallImage.style.display = 'block';
+ 
+    // Mostrar la foto capturada
+    smallImage.src = "data:image/jpeg;base64," + imageURI;
+  var options = new FileUploadOptions();
+  options.fileKey="file";
+  options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://parkingapp.260mb.net/subir.php", win, fail, options);
+			alert("Foto Almacenada");
         }*/
+
+
 
 function onSuccess(imageData) {
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
