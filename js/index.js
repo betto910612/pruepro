@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(subirFoto, onFail, { quality: 90,
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
