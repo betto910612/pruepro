@@ -39,16 +39,6 @@ document.addEventListener("deviceready",function(){
 	
 	});
 	
-	var canvas = document.getElementById("foto");	//OBTENGO CANVAS
-	   var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
-	   $.post("http://servicespub.260mb.net/procesar.php",
-	    {
-		uid : momento,
-		img : canvas.toDataURL('image/jpeg')
-	    },
-	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
-
-	
 	 var btnconsulta=$("#consultar");
   btnconsulta.tap(function(){
 	 
@@ -80,6 +70,18 @@ function enviar(nom,dir,tel,mail,lat,lon){
 		alert(data);
 		} 
 }
+
+
+$("#envia").click(function(){
+var canvas = document.getElementById('foto');	//OBTENGO CANVAS
+var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
+	   $.post('http://servicespub.260mb.net/subir.php',
+	    {
+		uid : momento,
+		img : canvas.toDataURL('image/jpeg')
+	    },
+	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
+	  });
 </script>
 
 
@@ -154,6 +156,7 @@ function coordenadas(position) {
 <!--<img style="display:none;width:300px;height:400px;" id="smallImage" src="" />-->
 <img id="foto" src="" />
 </p>
+<a href="#" id="envia" data-role="button">Subir imagen</a>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 <br> 
