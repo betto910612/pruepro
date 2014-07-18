@@ -78,8 +78,10 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 <!-------------------------------------------------------------------->
 
 function uploadPhoto(imageURI) {	
+
 document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
     document.getElementById("foto").style.backgroundSize="100% 100%";
+	
   var options = new FileUploadOptions();
   options.fileKey="file";
   options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -94,7 +96,7 @@ document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
  
             var ft = new FileTransfer();
             ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", options);
-			alert("Foto Almacenada");
+			
         }
 
 
