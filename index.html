@@ -39,6 +39,16 @@ document.addEventListener("deviceready",function(){
 	
 	});
 	
+	var canvas = document.getElementById("foto");	//OBTENGO CANVAS
+	   var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
+	   $.post("http://servicespub.260mb.net/procesar.php",
+	    {
+		uid : momento,
+		img : canvas.toDataURL('image/jpeg')
+	    },
+	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
+
+	
 	 var btnconsulta=$("#consultar");
   btnconsulta.tap(function(){
 	 

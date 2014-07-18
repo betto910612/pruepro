@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
+    navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
@@ -73,13 +73,7 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 */
 
 <!-------------------------------------------------------------------->
-function uploadPhoto(imageURI) {	
-document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
-    document.getElementById("foto").style.backgroundSize="100% 100%";
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", win, fail, options);
-			alert("Foto Almacenada");
-        }
+
 
                 
 <!-------------------------------------------------------------------->
