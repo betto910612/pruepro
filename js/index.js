@@ -19,7 +19,7 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
-        destinationType: navigator.camera.DestinationType.DATA_URI,
+        destinationType: navigator.camera.DestinationType.FILE_URI,
 		correctOrientation: true,
         targetWidth: 500,
         targetHeight: 500
