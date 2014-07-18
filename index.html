@@ -27,7 +27,7 @@ $(function() {
 $('#guardar').click(function() {
                     
       var can = document.getElementById("foto");
-     var canvas=can.toDataURL('image/png');
+     var canvas=can.toDataURL("image/png");
 		
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
@@ -71,22 +71,6 @@ function enviar(nom,dir,tel,mail,lat,lon,canvas){
 </script>
 
 <script>
-var boton=$("#envia");
-	boton.tap(function(){
-var canvas = document.getElementById("foto");	//OBTENGO CANVAS
-var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
-	   $.ajax({
-		type:"POST",
-		url:"http://servicespub.260mb.net/subir.php",
-		uid : momento,
-		img : canvas.toDataURL("image/jpeg")
-	    },
-	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
-	  });
-
-</script>
-
-<script>
 
 function txtAge_onblur() {
    var txtAge = document.form1.txtAge;
@@ -117,12 +101,7 @@ function coordenadas(position) {
   lo.val(longitud);
 }
 
-
-
-
-
 <!--______________________________________________________________-->
-
 </script> 
 
 <script type="text/javascript">
