@@ -78,14 +78,8 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 
 	function subirFoto(imageURI){
-			var imagen_a_mostrar = null;
-	var smallImage = document.getElementById("smallImage");
- 
-    // Mostrar elemento de imagen
-    smallImage.style.display = "block";
- 
-    // Mostrar la foto capturada
-    smallImage.src = "data:image/jpeg;base64," + imageURI;		
+			document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+    document.getElementById("foto").style.backgroundSize="100% 100%";
 			//Creamos un objeto FileUploadOptions que almacenará las opciones del archivo a enviar al servidor	
 			var options = new FileUploadOptions();
             options.fileKey = "imageData";//Nombre del elemento que se envía por POST
@@ -108,7 +102,8 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
             var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);	
+            ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);
+			alert("");	
 			
         }
 
