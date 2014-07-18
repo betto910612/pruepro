@@ -25,8 +25,6 @@ function capturePhoto() {
 		mediaType: Camera.MediaType.ALLMEDIA,
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
-        targetWidth: 350,
-        targetHeight: 500
     });
 }
 
