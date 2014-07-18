@@ -30,6 +30,9 @@ function capturePhoto() {
     });
 }
 
+
+
+
 function onSuccess(imageData) {
 document.getElementById("foto").style.backgroundImage="url('data:image/jpeg;base64,"+imageData+"')";
 document.getElementById("foto").style.backgroundSize="100% 100%";

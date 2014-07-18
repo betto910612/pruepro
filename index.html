@@ -30,9 +30,9 @@ document.addEventListener("deviceready",function(){
     var tel=$("#telefono").val();	
     var mail=$("#correo").val();
 	var lat=$("#lat").val();
-	var lon=$("#long").val();	
+	var lon=$("#long").val();
 	if(nom!="" && dir!="" && tel!="" && mail!="" && lat!="" && lon!=""){
-	enviar(nom,dir,tel,mail,lat,lon);
+	enviar(nom,dir,tel,mail,lat,lon, img);
 	}else{
 		alert('Favor de llenar todos los campos');
 		}
@@ -54,6 +54,7 @@ document.addEventListener("deviceready",function(){
 
 //servidor enviar un registro
 function enviar(nom,dir,tel,mail,lat,lon){
+	
 	$.ajax({
 		type: "POST",
 		url:"http://servicespub.260mb.net/procesar.php",
@@ -160,7 +161,6 @@ function coordenadas(position) {
 
 <img id="foto" src="" />
 </p>
-<a href="#" id="envia" data-role="button">Subir imagen</a>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
 <br> 
