@@ -21,6 +21,7 @@ function capturePhoto() {
     navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
         destinationType: Camera.DestinationType.DATA_URL,
 		sourceType : Camera.PictureSourceType.CAMERA,
+		mediaType: Camera.MediaType.PHOTO,
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
 		targetWidth: 350,
