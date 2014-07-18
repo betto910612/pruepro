@@ -73,12 +73,12 @@ function enviar(nom,dir,tel,mail,lat,lon){
 
 
 $("#envia").click(function(){
-var canvas = document.getElementById('foto');	//OBTENGO CANVAS
+var canvas = document.getElementById("foto");	//OBTENGO CANVAS
 var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
-	   $.post('http://servicespub.260mb.net/subir.php',
+	   $.post("http://servicespub.260mb.net/subir.php",
 	    {
 		uid : momento,
-		img : canvas.toDataURL('image/jpeg')
+		img : canvas.toDataURL("image/jpeg")
 	    },
 	     function(data) {}); //LO ENVIAMOS AL SERVIDOR
 	  });
