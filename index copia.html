@@ -19,43 +19,47 @@
         
        
         
+<script>
 
 
-
-<script type="text/javascript">
-$(function() {
-$('#guardar').click(function() {
-                    
-      var can = document.getElementById("foto");
-     var canvas=can.toDataURL('image/png');
-		
+document.addEventListener("deviceready",function(){
+	var boton=$("#guardar");
+	boton.tap(function(){
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
     var tel=$("#telefono").val();	
     var mail=$("#correo").val();
 	var lat=$("#lat").val();
 	var lon=$("#long").val();
-	if(nom!="" && dir!="" && tel!="" && mail!="" && lat!="" && lon!="" && canvas!=''){
-	$('.loader').show();
-                        $('.title div').text('enviando datos');
-                        $(this).hide();
-                        enviar(nom,dir,tel,mail,lat,lon,canvas);
-                    } else {
-
-                        alert('Todos los campos son requeridos', null, 'Error', 'Aceptar');
-                    }
-                });
-            }, false);
+	if(nom!="" && dir!="" && tel!="" && mail!="" && lat!="" && lon!=""){
+	enviar(nom,dir,tel,mail,lat,lon, img);
+	}else{
+		alert('Favor de llenar todos los campos');
+		}
+	
+	});
+	
+	 var btnconsulta=$("#consultar");
+  btnconsulta.tap(function(){
+	 
+	  $.ajax({
+		  type:"POST",
+		  url:"consulta.php",
+		  data:"",
+		  success: consultando
+		  });
+	  });
+  },false);
 
 
 //servidor enviar un registro
-function enviar(nom,dir,tel,mail,lat,lon,canvas){
+function enviar(nom,dir,tel,mail,lat,lon){
 	
 	$.ajax({
 		type: "POST",
 		url:"http://servicespub.260mb.net/procesar.php",
 		<!--url:"procesar.php",-->
-		data: "nombre=" + nom + "&direccion=" + dir + "&telefono=" + tel + "&correo=" + mail + "&latitud=" + lat + "&longitud=" + long +"&Canvas"+canvas,
+		data:({ nombre:nom,direccion:dir,telefono:tel,correo:mail,latitud:lat,longitud:lon}),
 		success: onSuccess
 	}).done(function(msg){
 		if(msg==1){
@@ -150,11 +154,12 @@ function coordenadas(position) {
 <br>
 <a href="#" id="btn" onClick="capturePhoto()" data-role="button">Tomar Foto</a>
 <br>
-
+<!--<div id="foto"></div>-->
  
  <p align="center">
+<!--<img style="display:none;width:300px;height:400px;" id="smallImage" src="" />-->
 
-<canvas id="foto" ></canvas>
+<img id="foto" src="" />
 </p>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
