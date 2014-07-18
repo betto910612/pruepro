@@ -85,9 +85,9 @@ document.getElementById("foto").style.backgroundSize="100% 100%";
             options.fileKey = "imageData";//Nombre del elemento que se envía por POST
 			
 			//Capturamos el nombre que la imagen tendrá en el servidor...
-			imagen_a_mostrar = imageURI.substr(imageURI.lastIndexOf('/')+1);
+imagen_a_mostrar = imageURI.substr(imageURI.lastIndexOf('/')+1);
 			
-            options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del archivo
+options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del archivo
 			options.mimeType = "image/jpeg";//Tipo MIME del archivo
 			
 			//Parametros clave:valor;
@@ -103,7 +103,7 @@ document.getElementById("foto").style.backgroundSize="100% 100%";
 			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
             var ft = new FileTransfer();
             ft.upload(imageURI, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);
-			alert("");	
+			alert("sube");	
 			
         }
 
