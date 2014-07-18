@@ -78,8 +78,8 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 
 	function subirFoto(imageURI){
-			document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
-    document.getElementById("foto").style.backgroundSize="100% 100%";
+document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+document.getElementById("foto").style.backgroundSize="100% 100%";
 			//Creamos un objeto FileUploadOptions que almacenará las opciones del archivo a enviar al servidor	
 			var options = new FileUploadOptions();
             options.fileKey = "imageData";//Nombre del elemento que se envía por POST
