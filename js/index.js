@@ -19,7 +19,7 @@ window.onload=function(){
 
 function capturePhoto() {
     navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
-        destinationType: Camera.DestinationType.FILE_URI,
+        destinationType: Camera.DestinationType.DATA_URL,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
 		mediaType: Camera.MediaType.ALLMEDIA,
