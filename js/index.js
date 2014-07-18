@@ -17,7 +17,7 @@ window.onload=function(){
     document.getElementById("foto").style.backgroundSize="50% 50%";
 };
 
-function capturePhoto() {
+function capture() {
     navigator.camera.getPicture(subirFoto, onFail, { quality: 50,
         destinationType: navigator.camera.DestinationType.FILE_URI,
 		correctOrientation: true,
@@ -29,6 +29,41 @@ function capturePhoto() {
 
 
 
+   var cameraoptions = { quality : 60,
+                destinationType : Camera.DestinationType.FILE_URI,
+                sourceType : Camera.PictureSourceType.CAMERA,
+                allowEdit : true,
+                encodingType :  Camera.EncodingType.JPEG,
+                targetWidth : 480,
+                targetHeight : 800,
+                mediaType: Camera.MediaType.ALLMEDIA,
+                saveToPhotoAlbum : true,
+                correctOrientation: true,
+                cameraDirection:Camera.Direction.FRONT
+            };
+
+            function onSuccess(imageData){
+               
+                var image = document.getElementById('pic');
+                
+ if (cameraoptions.destinationType ==Camera.DestinationType.FILE_URI){
+                    image.src = imageData;
+                }
+                else{
+                    image.src = "data:image/jpeg;base64," + imageData;
+                }
+            }
+           
+            
+function capturePhoto(){
+cameraoptions ={sourceType : Camera.PictureSourceType.CAMERA,
+                    destinationType : Camera.DestinationType.FILE_URI,
+                    targetWidth : 320,
+                    targetHeight : 240};
+navigator.camera.getPicture(onSuccess,onFail,cameraoptions);
+            }
+
+
 
 
 
@@ -37,7 +72,7 @@ function capturePhoto() {
 	var smallImage = document.getElementById("smallImage");
  
     // Mostrar elemento de imagen
-    smallImage.style.display = 'block';
+    smallImage.style.display = "block";
  
     // Mostrar la foto capturada
     smallImage.src = "data:image/jpeg;base64," + imageData;		
@@ -107,5 +142,5 @@ function onPhotoURISuccess(imageURI) {
 }
 
 function onFail(message) {
-    alert('Error por: ' + message);
+    alert('Error debido a : ' + message);
 }
