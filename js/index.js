@@ -77,7 +77,7 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 <!-------------------------------------------------------------------->
 
-function EnviarServidor(image){
+function Enviar(image){
                           
                          
                                 path = image.fullPath;
