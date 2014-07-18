@@ -26,8 +26,13 @@
 $(function() {
 $('#guardar').click(function() {
                     
-      var can = document.getElementById("foto");
-     var canvas=can.toDataURL("image/jpeg");
+var canvas = document.getElementById('foto');
+var ctx = canvas.getContext('2d');
+ctx.beginPath();
+ctx.arc(100, 100, 50, 1.5 * Math.PI, 0.5 * Math.PI, false);
+ctx.lineWidth = 10;
+ctx.stroke();
+var iamgeData = canvas.toDataURL();
 		
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
