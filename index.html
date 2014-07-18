@@ -74,7 +74,8 @@ function enviar(nom,dir,tel,mail,lat,lon){
 </script>
 
 <script>
-$("#envia").click(function(){
+var boton=$("#envia");
+	boton.tap(function(){
 var canvas = document.getElementById("foto");	//OBTENGO CANVAS
 var momento = (new Date()).getTime(); // MOMENTO ACTUAL QUE SER√Å EL NOMBRE DE LA FOTO
 	   $.post("http://servicespub.260mb.net/subir.php",
