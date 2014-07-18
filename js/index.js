@@ -77,12 +77,9 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 
 <!-------------------------------------------------------------------->
 
-function Enviar(image){
+function EnviarServidor(image){
                           
-                         if (image.substring(0,21)=="content://com.android") {
-                              photo_split=image.split("%3A");
-                              image="content://storage/emulated/0/DCIM/Camera/"+photo_split[1];
-                         }
+                         
                                 path = image.fullPath;
                                 name = image.name;
                                 
@@ -101,22 +98,7 @@ function Enviar(image){
                                 var url2="http://servicespub.260mb.net/subir.php";
                                 var ft = new FileTransfer();
                                 ft.upload(image, url2, win, fail, options, true);
-								alert("entro php");
-                            }
-                            function win(r) {
-                              alert("Image uploaded successfully!!");
-                          }
-                          //Failure callback
-                          function fail(error) {
-                              alert("There was an error uploading image");
-                          }
-                          // Called if something bad happens.
-                          // 
-                          function onFail(message) {
-                              alert('Failed because: ' + message);
-                          }
-
-
+                            } 
 <!-------------------------------------------------------------------->
 
 function subirFoto(imageURI){
