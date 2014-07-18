@@ -136,7 +136,7 @@ function coordenadas(position) {
 <br>
 <input type="text" id="long" placeholder="'Longitud'" readonly/>
 <br>
-<a href="#" id="btn" data-role="button">Tomar Foto</a>
+<a href="#" id="btn" onClick="capturePhoto()" data-role="button">Tomar Foto</a>
 <br>
 <!--<div id="foto"></div>-->
  
@@ -145,7 +145,7 @@ function coordenadas(position) {
 <img id="foto" src="" />
 </p>
 <br>
-<a href="#" id="guardar" onClick="uploadPhoto()" data-role="button">Guardar Datos</a>
+<a href="#" id="guardar" data-role="button">Guardar Datos</a>
 <br> 
 <input type="reset" value="Nuevo Registro">
 </form>

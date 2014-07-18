@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
+    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		encodingType :  Camera.EncodingType.JPEG,
@@ -73,50 +73,18 @@ navigator.camera.getPicture(onSuccess,onFail, {quality : 60,
 */
 
 <!-------------------------------------------------------------------->
-function subir(){
-function EnviarServidor(image){
-                          alert("entro");
-                         if (image.substring(0,21)=="content://com.android") {
-                              photo_split=image.split("%3A");
-                              image="content://storage/emulated/0/DCIM/Camera/"+photo_split[1];
-                         }
-                                path = image.fullPath;
-                                name = image.name;
-                                
-                                var options = new FileUploadOptions();
-                                options.fileKey="file";
-                                options.fileName=image.name;
-                                options.mimeType="image/jpeg";
-                               
-                                var params = new Object();
-                                params.fullpath = path;
-                                params.name = name;
+function uploadPhoto(imageURI) {	
+document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
+    document.getElementById("foto").style.backgroundSize="100% 100%";
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://servicespub.260mb.net/subir.php", win, fail, options);
+			alert("Foto Almacenada");
+        }
 
-                                options.params = params;
-                                options.chunkedMode = false;
-                                var url="http://parkingapp.260mb.net/subir.php";
-                                var url2="http://parkingapp.260mb.net/subir.php";
-                                var ft = new FileTransfer();
-                                ft.upload(image, url2, win, fail, options, true);
-								alert("entro php");
-                            }
-                            function win(r) {
-                              alert("Image uploaded successfully!!");
-                          }
-                          //Failure callback
-                          function fail(error) {
-                              alert("There was an error uploading image");
-                          }
-                          // Called if something bad happens.
-                          // 
-                          function onFail(message) {
-                              alert('Failed because: ' + message);
-                          }
-}
-
+                
 <!-------------------------------------------------------------------->
 
-function subirFoto(imageURI){
+/*function subirFoto(imageURI){
 document.getElementById("foto").style.backgroundImage="url('"+imageURI+"')";
 document.getElementById("foto").style.backgroundSize="100% 100%";
 			//Creamos un objeto FileUploadOptions que almacenará las opciones del archivo a enviar al servidor	
@@ -132,7 +100,7 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
 			//Parametros clave:valor;
             var params = new Object();
             /*params.value_latitud = latitud;
-            params.value_longitud = longitud;*/
+            params.value_longitud = longitud;
 			params.value1 = "test";
             params.value2 = "param";
 			
@@ -144,7 +112,7 @@ options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);//Nombre del arc
             ft.upload(imageURI,"http://parkingapp.260mb.net/subir.php", options);
 			alert("sube");	
 			
-        }
+        }*/
 
 
 
