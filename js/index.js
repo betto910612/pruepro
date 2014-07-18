@@ -12,9 +12,9 @@ var app = {
 };
 
 window.onload=function(){
-    document.getElementById("foto")/*.style.width = (window.innerWidth-50)+"px";
+    document.getElementById("foto").style.width = (window.innerWidth-50)+"px";
     document.getElementById("foto").style.height = (window.innerWidth-50)+"px";
-    document.getElementById("foto").style.backgroundSize="50% 50%";*/
+    document.getElementById("foto").style.backgroundSize="50% 50%";
 };
 
 function capturePhoto() {
