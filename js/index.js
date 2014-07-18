@@ -18,7 +18,7 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
+    navigator.camera.getPicture(subirFoto, onFail, { quality: 50,
         destinationType: navigator.camera.DestinationType.FILE_URI,
 		correctOrientation: true,
         targetWidth: 500,
@@ -27,7 +27,49 @@ function capturePhoto() {
 }
 
 
-function uploadPhoto(imageURI) {	
+
+
+
+
+
+	function subirFoto(imageData){
+			var imagen_a_mostrar = null;
+	var smallImage = document.getElementById("smallImage");
+ 
+    // Mostrar elemento de imagen
+    smallImage.style.display = 'block';
+ 
+    // Mostrar la foto capturada
+    smallImage.src = "data:image/jpeg;base64," + imageData;		
+			//Creamos un objeto FileUploadOptions que almacenará las opciones del archivo a enviar al servidor	
+			var options = new FileUploadOptions();
+            options.fileKey = "imageData";//Nombre del elemento que se envía por POST
+			
+			//Capturamos el nombre que la imagen tendrá en el servidor...
+			imagen_a_mostrar = imageData.substr(imageData.lastIndexOf('/')+1);
+			
+            options.fileName = imageData.substr(imageData.lastIndexOf('/')+1);//Nombre del archivo
+			options.mimeType = "image/jpeg";//Tipo MIME del archivo
+			
+			//Parametros clave:valor;
+            var params = new Object();
+            params.value_latitud = latitud;
+            params.value_longitud = longitud;
+			
+			//Añadimos los parámetros al objeto de las opciones.
+            options.params = params;
+
+			//Creamos un objeto FileTransfer que realizará el envio a traves del método upload
+            var ft = new FileTransfer();
+            ft.upload(imageData, encodeURI("http://parkingapp.260mb.net/subir.php"), win, fail, options);	
+			
+        }
+
+
+
+
+
+/*function uploadPhoto(imageURI) {	
 var smallImage = document.getElementById('smallImage');
  
     // Mostrar elemento de imagen
@@ -51,7 +93,7 @@ var smallImage = document.getElementById('smallImage');
             ft.upload(imageURI, "http://parkingapp.260mb.net/subir.php", win, fail, options);
 			alert("Foto Almacenada");
         }
-
+*/
 
 
 function onSuccess(imageData) {
