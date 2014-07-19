@@ -25,10 +25,9 @@
 <script type="text/javascript">
 $(function() {
 $('#guardar').click(function() {
-
-
-var can = document.getElementById("foto");
-var canvas=can.toDataURL('image/jpeg');
+                    
+     var can = document.getElementById('foto');
+     var canvas=can.toDataURL('image/jpeg');
 		
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
@@ -138,7 +137,7 @@ function coordenadas(position) {
  
  <p align="center">
 
-<img id="foto" src=""/>
+<canvas id="foto"></canvas>
 </p>
 <br>
 <a href="#" id="guardar" data-role="button">Guardar Datos</a>
