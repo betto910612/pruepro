@@ -25,7 +25,7 @@ function capturePhoto() {
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
 		targetWidth: 350,
-        targetHeight: 500
+        targetHeight: 400
     });
 }
 
