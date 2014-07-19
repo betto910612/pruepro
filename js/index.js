@@ -18,14 +18,20 @@ window.onload=function(){
 };
 
 function capturePhoto() {
-    navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
+	
+	navigator.camera.getPicture(onSuccess, onFail, { quality: 90,
+        destinationType: Camera.DestinationType.DATA_URL,
+        correctOrientation: true,
+        targetWidth: 1000,
+        targetHeight: 1000
+    /*navigator.camera.getPicture(onPhotoURI, onFail, { quality: 90,
         destinationType: Camera.DestinationType.FILE_URI,
 		sourceType : Camera.PictureSourceType.CAMERA,
 		mediaType: Camera.MediaType.PHOTO,
 		saveToPhotoAlbum : true,
 		correctOrientation: true,
 		targetWidth: 350,
-        targetHeight: 400
+        targetHeight: 400*/
     });
 }
 
