@@ -25,10 +25,10 @@
 <script type="text/javascript">
 $(function() {
 $('#guardar').click(function() {
-                    
-var canvas = document.getElementById('foto');
-var ctx = canvas.getContext('2d');
-var iamgeData = canvas.toDataURL("image/jpeg");
+
+
+var can = document.getElementById("foto");
+var canvas=can.toDataURL('image/jpeg');
 		
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
