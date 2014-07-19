@@ -28,9 +28,7 @@ $('#guardar').click(function() {
                     
 var canvas = document.getElementById('foto');
 var ctx = canvas.getContext('2d');
-ctx.beginPath();
-ctx.stroke();
-var iamgeData = canvas.toDataURL();
+var iamgeData = canvas.toDataURL("image/jpeg");
 		
     var nom=$("#nombre").val();
     var dir=$("#direccion").val();	
